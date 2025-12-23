@@ -1,0 +1,12 @@
+# Hivemedia Robots.txt
+User-agent: *
+Allow: /
+
+# Disallow admin and internal directories
+Disallow: /hiveoffice/
+Disallow: /incommon/
+Disallow: /_backup/
+Disallow: /_trash/
+
+# Sitemap location
+Sitemap: https://hivemedia.co.kr/sitemap.xml

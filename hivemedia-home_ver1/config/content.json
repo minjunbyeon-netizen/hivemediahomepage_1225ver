@@ -1,0 +1,349 @@
+{
+  "site": {
+    "title": "하이브미디어 | 부산 디지털 마케팅 에이전시 - 온라인 마케팅, 홈페이지 제작, 영상 제작",
+    "description": "부산 기반 통합 디지털 마케팅 에이전시. META 광고, 퍼포먼스 마케팅, 반응형 홈페이지 제작, 영상 콘텐츠 제작, 전시 기획까지 원스톱 솔루션을 제공합니다. 070-7728-6334",
+    "keywords": "부산 마케팅 대행사, 디지털 마케팅 에이전시, 홈페이지 제작, 영상 제작, META 광고, 퍼포먼스 마케팅",
+    "domain": "https://hivemedia.co.kr",
+    "copyright": "Copyright ⓒ 2023 HIVEMEDIA. All rights reserved"
+  },
+  "header": {
+    "logo": "HIVEMEDIA",
+    "nav": [
+      {
+        "text": "About",
+        "href": "about.html"
+      },
+      {
+        "text": "Services",
+        "href": "services.html"
+      },
+      {
+        "text": "Portfolio",
+        "href": "portfolio.html"
+      },
+      {
+        "text": "Contact",
+        "href": "contact.html"
+      }
+    ],
+    "ctaButtons": [
+      {
+        "text": "포트폴리오 PDF",
+        "href": "/documents/portfolio.pdf",
+        "style": "outline"
+      },
+      {
+        "text": "상담 예약",
+        "href": "contact.html",
+        "style": "filled",
+        "icon": "arrow"
+      }
+    ]
+  },
+  "preloader": {
+    "text1": "HIVE",
+    "text2": "MEDIA",
+    "numbers": [
+      "0",
+      "25",
+      "50",
+      "100"
+    ]
+  },
+  "mobileMenu": {
+    "title": "Menu",
+    "features": [
+      "200+ Projects",
+      "10+ Years"
+    ],
+    "socials": [
+      {
+        "text": "Blog",
+        "href": "https://blog.naver.com/hivemedia_official"
+      },
+      {
+        "text": "Instagram",
+        "href": "https://www.instagram.com/hivemedia_official"
+      }
+    ],
+    "email": "hive_ad@hivemedia.co.kr"
+  },
+  "hero": {
+    "title": "하이브미디어",
+    "position": "Digital Marketing Agency",
+    "location": {
+      "prefix": "Based in",
+      "value": "Busan, Korea"
+    },
+    "stack": [
+      "Marketing",
+      "Web Agency",
+      "Video Art"
+    ]
+  },
+  "about": {
+    "sectionTitle": "About Us",
+    "items": [
+      {
+        "title": "200+",
+        "subtitle": "완료 프로젝트",
+        "desc": "다양한 업종 성공 사례",
+        "gradient": "blue",
+        "href": "portfolio.html"
+      },
+      {
+        "title": "AWARDS",
+        "subtitle": "수상 및 인증",
+        "desc": "디지털 마케팅 전문성 인정",
+        "tags": [
+          "META Partner",
+          "Google Ads",
+          "네이버 공식"
+        ],
+        "gradient": "purple",
+        "href": "about.html"
+      },
+      {
+        "title": "98%",
+        "subtitle": "고객 만족도",
+        "desc": "재계약률 기준",
+        "gradient": "pink",
+        "href": "contact.html"
+      },
+      {
+        "title": "원스톱 솔루션",
+        "subtitle": "마케팅→웹→영상→전시",
+        "desc": "통합 서비스 제공",
+        "gradient": "mint",
+        "href": "services.html"
+      }
+    ],
+    "features": [
+      "온라인 마케팅",
+      "홈페이지 제작",
+      "영상 제작",
+      "전시 기획"
+    ],
+    "mission": {
+      "lines": [
+        [
+          {
+            "text": "당신의",
+            "color": "blue",
+            "align": "left"
+          },
+          {
+            "text": "마케팅을",
+            "color": "purple",
+            "align": "right"
+          }
+        ],
+        [
+          {
+            "text": "200% 성장시킬",
+            "color": "pink",
+            "align": "center"
+          }
+        ],
+        [
+          {
+            "text": "합리적인",
+            "color": "blue",
+            "align": "left"
+          },
+          {
+            "text": "비용으로",
+            "color": "white",
+            "align": "right"
+          }
+        ],
+        [
+          {
+            "text": "성공을 이끕니다",
+            "color": "purple",
+            "align": "center"
+          }
+        ]
+      ]
+    }
+  },
+  "works": {
+    "projects": [
+      {
+        "id": "1",
+        "title": "ONLINE MARKETING",
+        "type": "검색광고 · SNS · 바이럴",
+        "href": "https://hivemedia.co.kr/service/marketing.php",
+        "image": "public/images/project-1.webp",
+        "video": "public/videos/project-1.mp4"
+      },
+      {
+        "id": "2",
+        "title": "WEB AGENCY",
+        "type": "반응형 웹 · 쇼핑몰",
+        "href": "https://hivemedia.co.kr/service/agency.php",
+        "image": "public/images/project-2.webp",
+        "video": "public/videos/project-2.mp4"
+      },
+      {
+        "id": "3",
+        "title": "VIDEO ART",
+        "type": "홍보영상 · 광고영상 · 드론",
+        "href": "https://hivemedia.co.kr/service/video.php",
+        "image": "public/images/project-3.webp",
+        "video": "public/videos/project-3.mp4"
+      }
+    ]
+  },
+  "compare": {
+    "sectionTitle": "Why Choose Us",
+    "counterText": "고객 만족도",
+    "columns": {
+      "left": {
+        "title": "HIVEMEDIA",
+        "type": "positive",
+        "items": [
+          "원스톱 솔루션",
+          "전문가 43인",
+          "전국 네트워크",
+          "맞춤 전략",
+          "합리적 비용"
+        ]
+      },
+      "right": {
+        "title": "기존 방식",
+        "type": "negative",
+        "items": [
+          "분산된 서비스",
+          "제한된 인력",
+          "지역 한정",
+          "일반적 접근",
+          "높은 비용"
+        ]
+      }
+    }
+  },
+  "calculator": {
+    "title": [
+      "마케팅 효과",
+      "측정하기"
+    ],
+    "titleMobile": "마케팅 효과 측정",
+    "sliders": [
+      {
+        "id": "slider1",
+        "title": "월 광고 예산",
+        "prefix": "₩",
+        "suffix": "만원",
+        "min": 100,
+        "max": 1000,
+        "default": 300
+      },
+      {
+        "id": "slider2",
+        "title": "목표 전환율",
+        "prefix": "",
+        "suffix": "%",
+        "min": 1,
+        "max": 20,
+        "default": 5
+      }
+    ],
+    "result": {
+      "label": "예상 월간 효과:",
+      "prefix": "₩"
+    }
+  },
+  "contact": {
+    "greeting": [
+      "안녕하세요,",
+      "하이브미디어입니다!"
+    ],
+    "nameLabel": "저는",
+    "namePlaceholder": "이름/회사명",
+    "socialLabel": "연락처",
+    "socialPlaceholder": "전화번호 또는 이메일",
+    "buttons": [
+      {
+        "text": "이메일",
+        "type": "email",
+        "placeholder": "email@company.com"
+      },
+      {
+        "text": "전화번호",
+        "type": "tel",
+        "placeholder": "010-0000-0000"
+      }
+    ],
+    "submitText": "문의하기"
+  },
+  "cta": {
+    "bgText": "Contact Us",
+    "successMessage": "빠른 시일 내에 연락드리겠습니다!",
+    "closeButton": "더 알아보기"
+  },
+  "footer": {
+    "sectionTitle": "Contact",
+    "email": "hive_ad@hivemedia.co.kr",
+    "nav": [
+      {
+        "text": "About",
+        "href": "/about/about.php"
+      },
+      {
+        "text": "Portfolio",
+        "href": "/portfolio/portfolio.php"
+      },
+      {
+        "text": "Services",
+        "href": "/service/marketing.php"
+      },
+      {
+        "text": "Contact",
+        "href": "/inquiry/inquiry.php"
+      }
+    ],
+    "socials": [
+      {
+        "text": "Blog",
+        "href": "https://blog.naver.com/hivemedia_official"
+      },
+      {
+        "text": "Instagram",
+        "href": "https://www.instagram.com/hivemedia_official"
+      },
+      {
+        "text": "YouTube",
+        "href": "https://www.youtube.com/@하이브미디어"
+      }
+    ],
+    "designer": {
+      "prefix": "TEL",
+      "credits": [
+        {
+          "name": "070-7728-6334",
+          "href": "tel:070-7728-6334"
+        }
+      ]
+    },
+    "locations": [
+      {
+        "name": "부산 본사",
+        "address": "부산 남구 수영로 312 9층 918호",
+        "isPrimary": true
+      },
+      {
+        "name": "서울 지사",
+        "address": "서울특별시 중구 서소문로 89, 17층",
+        "isPrimary": false
+      },
+      {
+        "name": "대구 지사",
+        "address": "대구광역시 동구 동대구로 523, 3층",
+        "isPrimary": false
+      }
+    ],
+    "phone": "070-7728-6334",
+    "fax": "070-4850-8223"
+  }
+}

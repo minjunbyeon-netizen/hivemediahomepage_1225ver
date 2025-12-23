@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="site-title">하이브미디어 | 부산 디지털 마케팅 에이전시</title>
-    <meta name="description" id="site-description"
+    <title>하이브미디어 | 부산 디지털 마케팅 에이전시</title>
+    <meta name="description"
         content="부산 기반 통합 디지털 마케팅 에이전시. META 광고, 퍼포먼스 마케팅, 반응형 홈페이지 제작, 영상 콘텐츠 제작, 전시 기획까지 원스톱 솔루션을 제공합니다.">
     <meta name="keywords" content="부산 마케팅 대행사, 디지털 마케팅 에이전시, 홈페이지 제작, 영상 제작, META 광고, 퍼포먼스 마케팅, 부산 광고 대행사">
     <meta name="author" content="하이브미디어">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://hivemedia.co.kr/">
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hivemedia.co.kr/">
     <meta property="og:title" content="하이브미디어 | 부산 디지털 마케팅 에이전시">
@@ -25,15 +25,15 @@
     <meta name="twitter:title" content="하이브미디어 | 부산 디지털 마케팅 에이전시">
     <meta name="twitter:description" content="부산 기반 통합 디지털 마케팅 에이전시. 원스톱 솔루션 제공.">
 
-    <!-- Fonts - Brand Identity -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Poppins:ital,wght@0,500;0,600;0,700;0,800;0,900;1,900&family=Montserrat:wght@300;400;600;700;800;900&family=Inter+Tight:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="src/css/app.css">
+    <!-- Main CSS (새 구조) -->
+    <link rel="stylesheet" href="css/main.css">
 
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -45,7 +45,7 @@
     <!-- Vanilla Tilt -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 
-    <!-- Structured Data - Organization -->
+    <!-- Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -73,9 +73,10 @@
     </script>
 </head>
 
-
 <body>
-    <!-- Custom Cursor -->
+    <!-- ======================================
+         CUSTOM CURSOR
+         ====================================== -->
     <div class="cursor">
         <div class="cursor__show">
             <p></p>
@@ -94,40 +95,61 @@
         <span class="cursor__click"></span>
     </div>
 
-    <!-- Preloader -->
+    <!-- ======================================
+         PRELOADER
+         ====================================== -->
     <div class="preloader">
         <div class="preloader__text">
-            <span class="preloader__text-blick" data-content="preloader.text1"></span>
+            <span class="preloader__text-blick">HIVE</span>
             <div></div>
-            <span class="preloader__text-blick" data-content="preloader.text2"></span>
+            <span class="preloader__text-blick">MEDIA</span>
         </div>
         <div class="preloader__numbers">
             <span class="preloader__numbers-span">0</span>
             <div class="preloader__numbers-wrap">
-                <div data-content-list="preloader.numbers">
-                    <!-- Numbers will be injected here -->
+                <div>
+                    <span>0</span>
+                    <span>25</span>
+                    <span>50</span>
+                    <span>100</span>
                 </div>
             </div>
             <span>%</span>
         </div>
     </div>
 
-    <!-- Body Wrap -->
+    <!-- ======================================
+         BODY WRAP
+         ====================================== -->
     <div class="body__wrap">
-        <!-- Scrollbar Container -->
         <div id="scrollbar">
             <div class="scroll-content">
 
-                <!-- Header -->
+                <!-- ======================================
+                     HEADER
+                     ====================================== -->
                 <header class="header">
                     <div class="header__wrap">
                         <div class="center-wrap">
-                            <a href="/" class="header__logo" data-content="header.logo"></a>
-                            <nav class="header__nav desktop--hide" data-nav="header.nav">
-                                <!-- Nav items will be injected here -->
+                            <a href="/" class="header__logo">hivemedia</a>
+                            <nav class="header__nav desktop--hide">
+                                <a href="about.html" class="header__nav-item link-hover">About</a>
+                                <a href="services.html" class="header__nav-item link-hover">Services</a>
+                                <a href="portfolio.html" class="header__nav-item link-hover">Portfolio</a>
+                                <a href="contact.html" class="header__nav-item link-hover">Contact</a>
                             </nav>
-                            <div class="header__cta" data-header-cta="header.ctaButtons">
-                                <!-- CTA buttons will be injected here -->
+                            <div class="header__cta">
+                                <a href="/documents/portfolio.pdf" class="header__cta-btn header__cta-btn--outline">
+                                    포트폴리오 PDF
+                                </a>
+                                <a href="contact.html" class="header__cta-btn header__cta-btn--filled">
+                                    상담 예약
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </a>
                             </div>
                             <button class="header__burger">
                                 <span></span>
@@ -138,47 +160,44 @@
                     </div>
                 </header>
 
-                <!-- Mobile Menu - Fullscreen Overlay -->
+                <!-- ======================================
+                     MOBILE MENU
+                     ====================================== -->
                 <div class="mobile-menu">
-                    <!-- Brand Title -->
-                    <h2 class="simple-title">
-                        <span data-content="header.logo"></span>
-                    </h2>
-
-                    <!-- Features Row -->
-                    <div class="features" data-features="mobileMenu.features">
-                        <!-- Features will be injected here -->
+                    <h2 class="simple-title"><span>HIVEMEDIA</span></h2>
+                    <div class="features">
+                        <span>200+ Projects</span>
+                        <span>10+ Years</span>
                     </div>
-
-                    <!-- Main Content with Nav Links -->
                     <div class="mobile-menu__content">
-                        <nav class="links" data-mobile-nav="header.nav">
-                            <!-- Mobile nav items will be injected here -->
+                        <nav class="links">
+                            <a href="about.html" class="links__item"><span class="links__text">About</span></a>
+                            <a href="services.html" class="links__item"><span class="links__text">Services</span></a>
+                            <a href="portfolio.html" class="links__item"><span class="links__text">Portfolio</span></a>
+                            <a href="contact.html" class="links__item"><span class="links__text">Contact</span></a>
                         </nav>
                     </div>
-
-                    <!-- Footer with Socials -->
                     <div class="mobile-menu__footer">
-                        <div class="mobile-menu__socials" data-socials="mobileMenu.socials">
-                            <!-- Socials will be injected here -->
+                        <div class="mobile-menu__socials">
+                            <a href="https://blog.naver.com/hivemedia_official">Blog</a>
+                            <a href="https://www.instagram.com/hivemedia_official">Instagram</a>
                         </div>
-                        <a href="" class="mobile-menu__email" data-content="mobileMenu.email"
-                            data-href="mobileMenu.email" data-href-prefix="mailto:"></a>
+                        <a href="mailto:hive_ad@hivemedia.co.kr" class="mobile-menu__email">hive_ad@hivemedia.co.kr</a>
                     </div>
-
-                    <!-- Close Button -->
-                    <button class="mobile-menu__close mobile-menu__close--mobile">
-                        <span class="link-hover">Close</span>
-                    </button>
-                    <button class="mobile-menu__close mobile-menu__close--desktop">
-                        <span class="link-hover">Close</span>
-                    </button>
+                    <button class="mobile-menu__close mobile-menu__close--mobile"><span
+                            class="link-hover">Close</span></button>
+                    <button class="mobile-menu__close mobile-menu__close--desktop"><span
+                            class="link-hover">Close</span></button>
                 </div>
 
-                <!-- Main Content -->
+                <!-- ======================================
+                     MAIN CONTENT
+                     ====================================== -->
                 <main id="home">
 
-                    <!-- Main Screen / Hero Section -->
+                    <!-- ======================================
+                         HERO SECTION
+                         ====================================== -->
                     <section class="main-screen">
                         <div class="main-screen__bg">
                             <div class="main-screen__video">
@@ -187,7 +206,7 @@
                                     src="https://player.castr.com/vod/eSgaF5bWKPLIM8wt?autoplay=1&muted=1&loop=1&controls=0"
                                     frameborder="0" allow="autoplay; fullscreen" allowfullscreen>
                                 </iframe>
-                                <!-- Mobile Video (hidden by default, shown via CSS) -->
+                                <!-- Mobile Video -->
                                 <iframe class="video-mobile"
                                     src="https://player.castr.com/vod/ZAbsoGgzwVJy0fBB?autoplay=1&muted=1&loop=1&controls=0"
                                     frameborder="0" allow="autoplay; fullscreen" allowfullscreen>
@@ -196,102 +215,266 @@
                         </div>
                         <div class="main-screen__content">
                             <div class="center-wrap">
-                                <h1 class="main-screen__title" data-content="hero.title"></h1>
-                                <nav class="main-screen__nav" data-hero-nav="header.nav">
-                                    <!-- Hero nav items will be injected here -->
+                                <h1 class="main-screen__title">하이브미디어</h1>
+                                <nav class="main-screen__nav">
+                                    <a href="about.html" class="main-screen__nav-item">About</a>
+                                    <a href="services.html" class="main-screen__nav-item">Services</a>
+                                    <a href="portfolio.html" class="main-screen__nav-item">Portfolio</a>
+                                    <a href="contact.html" class="main-screen__nav-item">Contact</a>
                                 </nav>
                             </div>
                         </div>
                         <div class="main-screen__bottom">
                             <div class="center-wrap">
                                 <div class="main-screen__position">
-                                    <span data-content="hero.position"></span>
+                                    <span>Digital Marketing Agency</span>
                                 </div>
                                 <div class="main-screen__location">
-                                    <span data-content="hero.location.prefix"></span>
-                                    <span><span class="anim-line"><span
-                                                data-content="hero.location.value"></span></span></span>
+                                    <span>Based in</span>
+                                    <span><span class="anim-line"><span>Busan, Korea</span></span></span>
                                 </div>
-                                <div class="main-screen__stack" data-stack="hero.stack">
-                                    <!-- Stack items will be injected here -->
+                                <div class="main-screen__stack">
+                                    <span>Marketing</span>
+                                    <span>Web Agency</span>
+                                    <span>Video Art</span>
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    <!-- About Section -->
+                    <!-- ======================================
+                         ABOUT SECTION
+                         ★★★ 텍스트 수정은 여기! ★★★
+                         ====================================== -->
                     <section id="about" class="about at-block">
                         <div class="about__gsap">
-                            <h2 class="simple-title">
-                                <span data-content="about.sectionTitle"></span>
-                            </h2>
-                            <div class="about__items" data-about-items="about.items">
-                                <!-- About items will be injected here -->
+                            <h2 class="simple-title"><span>About Us</span></h2>
+
+                            <!-- About Cards - 여기서 텍스트 직접 수정! -->
+                            <div class="about__items">
+                                <!-- 카드 1: 200+ -->
+                                <a href="portfolio.html" class="about__item about__item--blue">
+                                    <span class="about__item-title">200+</span>
+                                    <span class="about__item-subtitle">완료 프로젝트</span>
+                                    <span class="about__item-desc">다양한 업종 성공 사례</span>
+                                </a>
+
+                                <!-- 카드 2: AWARDS -->
+                                <a href="about.html" class="about__item about__item--purple">
+                                    <span class="about__item-title">AWARDS</span>
+                                    <span class="about__item-subtitle">수상 및 인증</span>
+                                    <span class="about__item-desc">디지털 마케팅 전문성 인정</span>
+                                    <div class="about__item-tags">
+                                        <span class="about__item-tag">META Partner</span>
+                                        <span class="about__item-tag">Google Ads</span>
+                                        <span class="about__item-tag">네이버 공식</span>
+                                    </div>
+                                </a>
+
+                                <!-- 카드 3: 98% -->
+                                <a href="contact.html" class="about__item about__item--pink">
+                                    <span class="about__item-title">98%</span>
+                                    <span class="about__item-subtitle">고객 만족도</span>
+                                    <span class="about__item-desc">재계약률 기준</span>
+                                </a>
+
+                                <!-- 카드 4: 원스톱 솔루션 -->
+                                <a href="services.html" class="about__item about__item--mint">
+                                    <span class="about__item-title">원스톱 솔루션</span>
+                                    <span class="about__item-subtitle">마케팅→웹→영상→전시</span>
+                                    <span class="about__item-desc">통합 서비스 제공</span>
+                                </a>
                             </div>
-                            <div class="features" data-features="about.features">
-                                <!-- Features will be injected here -->
+
+                            <!-- Features -->
+                            <div class="features">
+                                <span class="features__item">온라인 마케팅</span>
+                                <span class="features__item">홈페이지 제작</span>
+                                <span class="features__item">영상 제작</span>
+                                <span class="features__item">전시 기획</span>
                             </div>
 
                             <!-- Mission Overlay -->
                             <div class="mission">
-                                <div class="mission__content" data-mission="about.mission.lines">
-                                    <!-- Mission lines will be injected here -->
+                                <div class="mission__content">
+                                    <div class="mission__row">
+                                        <span class="mission__text mission__text--blue mission__text--left">당신의</span>
+                                        <span
+                                            class="mission__text mission__text--purple mission__text--right">마케팅을</span>
+                                    </div>
+                                    <div class="mission__row">
+                                        <span class="mission__text mission__text--pink mission__text--center">200%
+                                            성장시킬</span>
+                                    </div>
+                                    <div class="mission__row">
+                                        <span class="mission__text mission__text--blue mission__text--left">합리적인</span>
+                                        <span
+                                            class="mission__text mission__text--white mission__text--right">비용으로</span>
+                                    </div>
+                                    <div class="mission__row">
+                                        <span class="mission__text mission__text--purple mission__text--center">성공을
+                                            이끕니다</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    <!-- Works Section -->
+                    <!-- ======================================
+                         WORKS SECTION
+                         ====================================== -->
                     <section id="works" class="works">
-                        <div class="works__blocks" data-works-blocks="works.projects">
-                            <!-- Works blocks will be injected here -->
+                        <div class="works__blocks">
+                            <div class="works__block" data-id="1">
+                                <video src="public/videos/project-1.mp4" muted loop></video>
+                                <span class="works__block-title">ONLINE MARKETING</span>
+                            </div>
+                            <div class="works__block" data-id="2">
+                                <video src="public/videos/project-2.mp4" muted loop></video>
+                                <span class="works__block-title">WEB AGENCY</span>
+                            </div>
+                            <div class="works__block" data-id="3">
+                                <video src="public/videos/project-3.mp4" muted loop></video>
+                                <span class="works__block-title">VIDEO ART</span>
+                            </div>
                         </div>
-                        <div class="works__list" data-works-list="works.projects">
-                            <!-- Works list items will be injected here -->
+                        <div class="works__list cursor-works">
+                            <a href="https://hivemedia.co.kr/service/marketing.php" class="works__item" data-id="1">
+                                <div class="works__item-img">
+                                    <img src="public/images/project-1.webp" alt="Online Marketing">
+                                </div>
+                                <div class="works__item-info">
+                                    <span class="works__item-title">ONLINE MARKETING</span>
+                                    <span class="works__item-type">검색광고 · SNS · 바이럴</span>
+                                </div>
+                            </a>
+                            <a href="https://hivemedia.co.kr/service/agency.php" class="works__item" data-id="2">
+                                <div class="works__item-img">
+                                    <img src="public/images/project-2.webp" alt="Web Agency">
+                                </div>
+                                <div class="works__item-info">
+                                    <span class="works__item-title">WEB AGENCY</span>
+                                    <span class="works__item-type">반응형 웹 · 쇼핑몰</span>
+                                </div>
+                            </a>
+                            <a href="https://hivemedia.co.kr/service/video.php" class="works__item" data-id="3">
+                                <div class="works__item-img">
+                                    <img src="public/images/project-3.webp" alt="Video Art">
+                                </div>
+                                <div class="works__item-info">
+                                    <span class="works__item-title">VIDEO ART</span>
+                                    <span class="works__item-type">홍보영상 · 광고영상 · 드론</span>
+                                </div>
+                            </a>
                         </div>
                     </section>
 
-                    <!-- Compare Section -->
+                    <!-- ======================================
+                         COMPARE SECTION
+                         ====================================== -->
                     <section id="compare" class="compare">
-                        <h2 class="simple-title">
-                            <span data-content="compare.sectionTitle"></span>
-                        </h2>
+                        <h2 class="simple-title"><span>Why Choose Us</span></h2>
                         <div class="compare__content">
-                            <div class="compare__inner" data-compare="compare.columns">
-                                <!-- Compare columns will be injected here -->
+                            <div class="compare__inner">
+                                <div class="compare__column">
+                                    <h3 class="compare__column-title">HIVEMEDIA</h3>
+                                    <ul class="compare__list compare__list--positive">
+                                        <li class="compare__item"><span class="compare__text">원스톱 솔루션</span></li>
+                                        <li class="compare__item"><span class="compare__text">전문가 43인</span></li>
+                                        <li class="compare__item"><span class="compare__text">전국 네트워크</span></li>
+                                        <li class="compare__item"><span class="compare__text">맞춤 전략</span></li>
+                                        <li class="compare__item"><span class="compare__text">합리적 비용</span></li>
+                                    </ul>
+                                </div>
+                                <div class="compare__counter-wrap">
+                                    <div class="compare__counter">
+                                        <span id="counter">28</span><span>%</span>
+                                    </div>
+                                    <span class="compare__counter-text">고객 만족도</span>
+                                </div>
+                                <div class="compare__column">
+                                    <h3 class="compare__column-title">기존 방식</h3>
+                                    <ul class="compare__list compare__list--negative">
+                                        <li class="compare__item"><span class="compare__text">분산된 서비스</span></li>
+                                        <li class="compare__item"><span class="compare__text">제한된 인력</span></li>
+                                        <li class="compare__item"><span class="compare__text">지역 한정</span></li>
+                                        <li class="compare__item"><span class="compare__text">일반적 접근</span></li>
+                                        <li class="compare__item"><span class="compare__text">높은 비용</span></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </section>
 
-                    <!-- Calculator Section -->
+                    <!-- ======================================
+                         CALCULATOR SECTION
+                         ====================================== -->
                     <section id="calc" class="calc">
                         <div class="mission mission--two">
-                            <div class="mission__row mission__row--desktop" data-calc-title="calculator.title">
-                                <!-- Calculator title will be injected here -->
+                            <div class="mission__row mission__row--desktop">
+                                <span class="mission__text">마케팅 효과</span>
+                                <span class="mission__text">측정하기</span>
                             </div>
                             <div class="mission__row mission__row--mobile">
-                                <span class="mission__text mission__text--mobile"
-                                    data-content="calculator.titleMobile"></span>
+                                <span class="mission__text mission__text--mobile">마케팅 효과 측정</span>
                             </div>
                         </div>
                         <div class="center-wrap">
-                            <div class="calc__cards" data-calc-sliders="calculator.sliders">
-                                <!-- Calculator sliders will be injected here -->
+                            <div class="calc__cards">
+                                <div class="calc__card tils-start">
+                                    <div class="calc__card-header">
+                                        <span class="calc__card-title">월 광고 예산</span>
+                                        <span class="calc__card-value">₩<span id="display1">300</span>만원</span>
+                                    </div>
+                                    <input type="range" id="slider1" class="calc__slider" min="100" max="1000"
+                                        value="300">
+                                </div>
+                                <div class="calc__card tils-start">
+                                    <div class="calc__card-header">
+                                        <span class="calc__card-title">목표 전환율</span>
+                                        <span class="calc__card-value"><span id="display2">5</span>%</span>
+                                    </div>
+                                    <input type="range" id="slider2" class="calc__slider" min="1" max="20" value="5">
+                                </div>
                             </div>
                             <div class="calc__result">
-                                <span class="calc__result-label" data-content="calculator.result.label"></span>
+                                <span class="calc__result-label">예상 월간 효과:</span>
                                 <span class="calc__result-value" id="result">$0</span>
                             </div>
                         </div>
                     </section>
 
-                    <!-- CTA Scroll Section -->
+                    <!-- ======================================
+                         CONTACT SECTION
+                         ====================================== -->
                     <section class="cta-scroll">
-                        <!-- Contact Form -->
                         <div class="contact contact--white">
                             <div class="center-wrap">
-                                <form class="contact__content" data-contact="contact">
-                                    <!-- Contact form will be injected here -->
+                                <form class="contact__content">
+                                    <div class="contact__row">
+                                        <span class="contact__text">안녕하세요,</span>
+                                        <span class="contact__text">하이브미디어입니다!</span>
+                                    </div>
+                                    <div class="contact__row">
+                                        <span class="contact__text">저는</span>
+                                        <div class="contact__input-wrap">
+                                            <input type="text" name="name" class="contact__input" placeholder="이름/회사명">
+                                            <div class="contact__input-border"></div>
+                                        </div>
+                                    </div>
+                                    <div class="contact__row">
+                                        <span class="contact__text">연락처</span>
+                                        <div class="contact__btns">
+                                            <button type="button" class="contact__btn btn btn--active">이메일</button>
+                                            <button type="button" class="contact__btn btn">전화번호</button>
+                                        </div>
+                                        <div class="contact__input-wrap">
+                                            <input type="text" name="social" class="contact__input"
+                                                placeholder="email@company.com">
+                                            <div class="contact__input-border"></div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="contact__send btn btn--white">문의하기</button>
                                 </form>
                             </div>
                         </div>
@@ -299,41 +482,43 @@
 
                     <!-- CTA Popup -->
                     <div class="cta">
-                        <div class="cta__bg-text at-element" data-at-name="atText" data-content="cta.bgText"></div>
+                        <div class="cta__bg-text at-element" data-at-name="atText">Contact Us</div>
                         <div class="cta__popup">
                             <div class="cta__header">
-                                <span class="cta__header-text cta__header-text--desktop"
-                                    data-content="cta.successMessage"></span>
-                                <span class="cta__header-text cta__header-text--mobile"
-                                    data-content="cta.successMessage"></span>
-                                <button class="cta__header-close">
-                                    <span data-content="cta.closeButton"></span>
-                                </button>
+                                <span class="cta__header-text cta__header-text--desktop">빠른 시일 내에 연락드리겠습니다!</span>
+                                <span class="cta__header-text cta__header-text--mobile">빠른 시일 내에 연락드리겠습니다!</span>
+                                <button class="cta__header-close"><span>더 알아보기</span></button>
                             </div>
                         </div>
                     </div>
 
                 </main>
 
-                <!-- Footer -->
+                <!-- ======================================
+                     FOOTER
+                     ====================================== -->
                 <footer class="footer">
                     <div class="center-wrap">
-                        <h2 class="simple-title">
-                            <span data-content="footer.sectionTitle"></span>
-                        </h2>
+                        <h2 class="simple-title"><span>Contact</span></h2>
                         <div class="footer__content">
-                            <a href="" class="footer__email" data-content="footer.email" data-href="footer.email"
-                                data-href-prefix="mailto:"></a>
-                            <nav class="footer__nav" data-footer-nav="footer.nav">
-                                <!-- Footer nav will be injected here -->
+                            <a href="mailto:hive_ad@hivemedia.co.kr" class="footer__email">hive_ad@hivemedia.co.kr</a>
+                            <nav class="footer__nav">
+                                <a href="/about/about.php" class="footer__nav-item link-hover">About</a>
+                                <a href="/portfolio/portfolio.php" class="footer__nav-item link-hover">Portfolio</a>
+                                <a href="/service/marketing.php" class="footer__nav-item link-hover">Services</a>
+                                <a href="/inquiry/inquiry.php" class="footer__nav-item link-hover">Contact</a>
                             </nav>
-                            <div class="footer__socials" data-socials="footer.socials">
-                                <!-- Footer socials will be injected here -->
+                            <div class="footer__socials">
+                                <a href="https://blog.naver.com/hivemedia_official"
+                                    class="footer__socials-link">Blog</a>
+                                <a href="https://www.instagram.com/hivemedia_official"
+                                    class="footer__socials-link">Instagram</a>
+                                <a href="https://www.youtube.com/@하이브미디어" class="footer__socials-link">YouTube</a>
                             </div>
                         </div>
                         <div class="footer__bottom">
-                            <span class="footer__designer" data-designer="footer.designer">
-                                <!-- Designer credits will be injected here -->
+                            <span class="footer__designer">
+                                TEL <a href="tel:070-7728-6334">070-7728-6334</a>
                             </span>
                         </div>
                     </div>
@@ -343,11 +528,9 @@
         </div>
     </div>
 
-    <!-- Content Loader Script -->
-    <script src="src/js/content-loader.js"></script>
+    <!-- Main Script (content-loader 없이) -->
+    <script src="js/main.js"></script>
 
-    <!-- Main Scripts -->
-    <script src="src/js/app.js"></script>
 </body>
 
 </html>

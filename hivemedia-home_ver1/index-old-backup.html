@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="site-title">하이브미디어 | 부산 디지털 마케팅 에이전시</title>
+    <meta name="description" id="site-description"
+        content="부산 기반 통합 디지털 마케팅 에이전시. META 광고, 퍼포먼스 마케팅, 반응형 홈페이지 제작, 영상 콘텐츠 제작, 전시 기획까지 원스톱 솔루션을 제공합니다.">
+    <meta name="keywords" content="부산 마케팅 대행사, 디지털 마케팅 에이전시, 홈페이지 제작, 영상 제작, META 광고, 퍼포먼스 마케팅, 부산 광고 대행사">
+    <meta name="author" content="하이브미디어">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hivemedia.co.kr/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hivemedia.co.kr/">
+    <meta property="og:title" content="하이브미디어 | 부산 디지털 마케팅 에이전시">
+    <meta property="og:description" content="그 너머의 세상을 보다, 그 이상의 생각을 만들다. 온라인 마케팅, 홈페이지 제작, 영상 제작, 전시 기획까지 원스톱 솔루션 제공.">
+    <meta property="og:site_name" content="하이브미디어">
+    <meta property="og:locale" content="ko_KR">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="하이브미디어 | 부산 디지털 마케팅 에이전시">
+    <meta name="twitter:description" content="부산 기반 통합 디지털 마케팅 에이전시. 원스톱 솔루션 제공.">
+
+    <!-- Fonts - Brand Identity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Poppins:ital,wght@0,500;0,600;0,700;0,800;0,900;1,900&family=Montserrat:wght@300;400;600;700;800;900&family=Inter+Tight:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="src/css/app.css">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- Vanilla Tilt -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+
+    <!-- Structured Data - Organization -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "하이브미디어",
+        "alternateName": "HIVEMEDIA",
+        "url": "https://hivemedia.co.kr",
+        "description": "부산 기반 디지털 마케팅 에이전시",
+        "telephone": "+82-70-7728-6334",
+        "email": "hive_ad@hivemedia.co.kr",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "수영로 312 9층 918호",
+            "addressLocality": "남구",
+            "addressRegion": "부산광역시",
+            "postalCode": "48508",
+            "addressCountry": "KR"
+        },
+        "sameAs": [
+            "https://www.instagram.com/hivemedia_official",
+            "https://www.youtube.com/@하이브미디어",
+            "https://blog.naver.com/hivemedia_official"
+        ]
+    }
+    </script>
+</head>
+
+
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor">
+        <div class="cursor__show">
+            <p></p>
+        </div>
+        <div class="cursor__video">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 5.14V19.14L19 12.14L8 5.14Z" fill="currentColor" />
+            </svg>
+        </div>
+        <div class="cursor__works"></div>
+        <div class="cursor__arrow">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" />
+            </svg>
+        </div>
+        <span class="cursor__click"></span>
+    </div>
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader__text">
+            <span class="preloader__text-blick" data-content="preloader.text1"></span>
+            <div></div>
+            <span class="preloader__text-blick" data-content="preloader.text2"></span>
+        </div>
+        <div class="preloader__numbers">
+            <span class="preloader__numbers-span">0</span>
+            <div class="preloader__numbers-wrap">
+                <div data-content-list="preloader.numbers">
+                    <!-- Numbers will be injected here -->
+                </div>
+            </div>
+            <span>%</span>
+        </div>
+    </div>
+
+    <!-- Body Wrap -->
+    <div class="body__wrap">
+        <!-- Scrollbar Container -->
+        <div id="scrollbar">
+            <div class="scroll-content">
+
+                <!-- Header -->
+                <header class="header">
+                    <div class="header__wrap">
+                        <div class="center-wrap">
+                            <a href="/" class="header__logo" data-content="header.logo"></a>
+                            <nav class="header__nav desktop--hide" data-nav="header.nav">
+                                <!-- Nav items will be injected here -->
+                            </nav>
+                            <div class="header__cta" data-header-cta="header.ctaButtons">
+                                <!-- CTA buttons will be injected here -->
+                            </div>
+                            <button class="header__burger">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Mobile Menu - Fullscreen Overlay -->
+                <div class="mobile-menu">
+                    <!-- Brand Title -->
+                    <h2 class="simple-title">
+                        <span data-content="header.logo"></span>
+                    </h2>
+
+                    <!-- Features Row -->
+                    <div class="features" data-features="mobileMenu.features">
+                        <!-- Features will be injected here -->
+                    </div>
+
+                    <!-- Main Content with Nav Links -->
+                    <div class="mobile-menu__content">
+                        <nav class="links" data-mobile-nav="header.nav">
+                            <!-- Mobile nav items will be injected here -->
+                        </nav>
+                    </div>
+
+                    <!-- Footer with Socials -->
+                    <div class="mobile-menu__footer">
+                        <div class="mobile-menu__socials" data-socials="mobileMenu.socials">
+                            <!-- Socials will be injected here -->
+                        </div>
+                        <a href="" class="mobile-menu__email" data-content="mobileMenu.email"
+                            data-href="mobileMenu.email" data-href-prefix="mailto:"></a>
+                    </div>
+
+                    <!-- Close Button -->
+                    <button class="mobile-menu__close mobile-menu__close--mobile">
+                        <span class="link-hover">Close</span>
+                    </button>
+                    <button class="mobile-menu__close mobile-menu__close--desktop">
+                        <span class="link-hover">Close</span>
+                    </button>
+                </div>
+
+                <!-- Main Content -->
+                <main id="home">
+
+                    <!-- Main Screen / Hero Section -->
+                    <section class="main-screen">
+                        <div class="main-screen__bg">
+                            <div class="main-screen__video">
+                                <!-- PC Video -->
+                                <iframe class="video-pc"
+                                    src="https://player.castr.com/vod/eSgaF5bWKPLIM8wt?autoplay=1&muted=1&loop=1&controls=0"
+                                    frameborder="0" allow="autoplay; fullscreen" allowfullscreen>
+                                </iframe>
+                                <!-- Mobile Video (hidden by default, shown via CSS) -->
+                                <iframe class="video-mobile"
+                                    src="https://player.castr.com/vod/ZAbsoGgzwVJy0fBB?autoplay=1&muted=1&loop=1&controls=0"
+                                    frameborder="0" allow="autoplay; fullscreen" allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                        <div class="main-screen__content">
+                            <div class="center-wrap">
+                                <h1 class="main-screen__title" data-content="hero.title"></h1>
+                                <nav class="main-screen__nav" data-hero-nav="header.nav">
+                                    <!-- Hero nav items will be injected here -->
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="main-screen__bottom">
+                            <div class="center-wrap">
+                                <div class="main-screen__position">
+                                    <span data-content="hero.position"></span>
+                                </div>
+                                <div class="main-screen__location">
+                                    <span data-content="hero.location.prefix"></span>
+                                    <span><span class="anim-line"><span
+                                                data-content="hero.location.value"></span></span></span>
+                                </div>
+                                <div class="main-screen__stack" data-stack="hero.stack">
+                                    <!-- Stack items will be injected here -->
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- About Section -->
+                    <section id="about" class="about at-block">
+                        <div class="about__gsap">
+                            <h2 class="simple-title">
+                                <span data-content="about.sectionTitle"></span>
+                            </h2>
+                            <div class="about__items" data-about-items="about.items">
+                                <!-- About items will be injected here -->
+                            </div>
+                            <div class="features" data-features="about.features">
+                                <!-- Features will be injected here -->
+                            </div>
+
+                            <!-- Mission Overlay -->
+                            <div class="mission">
+                                <div class="mission__content" data-mission="about.mission.lines">
+                                    <!-- Mission lines will be injected here -->
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Works Section -->
+                    <section id="works" class="works">
+                        <div class="works__blocks" data-works-blocks="works.projects">
+                            <!-- Works blocks will be injected here -->
+                        </div>
+                        <div class="works__list" data-works-list="works.projects">
+                            <!-- Works list items will be injected here -->
+                        </div>
+                    </section>
+
+                    <!-- Compare Section -->
+                    <section id="compare" class="compare">
+                        <h2 class="simple-title">
+                            <span data-content="compare.sectionTitle"></span>
+                        </h2>
+                        <div class="compare__content">
+                            <div class="compare__inner" data-compare="compare.columns">
+                                <!-- Compare columns will be injected here -->
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Calculator Section -->
+                    <section id="calc" class="calc">
+                        <div class="mission mission--two">
+                            <div class="mission__row mission__row--desktop" data-calc-title="calculator.title">
+                                <!-- Calculator title will be injected here -->
+                            </div>
+                            <div class="mission__row mission__row--mobile">
+                                <span class="mission__text mission__text--mobile"
+                                    data-content="calculator.titleMobile"></span>
+                            </div>
+                        </div>
+                        <div class="center-wrap">
+                            <div class="calc__cards" data-calc-sliders="calculator.sliders">
+                                <!-- Calculator sliders will be injected here -->
+                            </div>
+                            <div class="calc__result">
+                                <span class="calc__result-label" data-content="calculator.result.label"></span>
+                                <span class="calc__result-value" id="result">$0</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- CTA Scroll Section -->
+                    <section class="cta-scroll">
+                        <!-- Contact Form -->
+                        <div class="contact contact--white">
+                            <div class="center-wrap">
+                                <form class="contact__content" data-contact="contact">
+                                    <!-- Contact form will be injected here -->
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- CTA Popup -->
+                    <div class="cta">
+                        <div class="cta__bg-text at-element" data-at-name="atText" data-content="cta.bgText"></div>
+                        <div class="cta__popup">
+                            <div class="cta__header">
+                                <span class="cta__header-text cta__header-text--desktop"
+                                    data-content="cta.successMessage"></span>
+                                <span class="cta__header-text cta__header-text--mobile"
+                                    data-content="cta.successMessage"></span>
+                                <button class="cta__header-close">
+                                    <span data-content="cta.closeButton"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </main>
+
+                <!-- Footer -->
+                <footer class="footer">
+                    <div class="center-wrap">
+                        <h2 class="simple-title">
+                            <span data-content="footer.sectionTitle"></span>
+                        </h2>
+                        <div class="footer__content">
+                            <a href="" class="footer__email" data-content="footer.email" data-href="footer.email"
+                                data-href-prefix="mailto:"></a>
+                            <nav class="footer__nav" data-footer-nav="footer.nav">
+                                <!-- Footer nav will be injected here -->
+                            </nav>
+                            <div class="footer__socials" data-socials="footer.socials">
+                                <!-- Footer socials will be injected here -->
+                            </div>
+                        </div>
+                        <div class="footer__bottom">
+                            <span class="footer__designer" data-designer="footer.designer">
+                                <!-- Designer credits will be injected here -->
+                            </span>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Loader Script -->
+    <script src="src/js/content-loader.js"></script>
+
+    <!-- Main Scripts -->
+    <script src="src/js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,389 @@
+/* ======================================
+   BASE STYLES
+   Variables, Reset, Typography, Layout
+   ====================================== */
+
+/* Font Faces */
+@font-face {
+    font-family: "Inter Tight";
+    src: url(https://fonts.gstatic.com/s/intertight/v7/NGSwv5HMAFg6IuGlBNMjxK0M.woff2) format(woff2);
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter Tight";
+    src: url(https://fonts.gstatic.com/s/intertight/v7/NGSwv5HMAFg6IuGlBNMjxK0M.woff2) format(woff2);
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter Tight";
+    src: url(https://fonts.gstatic.com/s/intertight/v7/NGSwv5HMAFg6IuGlBNMjxK0M.woff2) format(woff2);
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter Tight";
+    src: url(https://fonts.gstatic.com/s/intertight/v7/NGSwv5HMAFg6IuGlBNMjxK0M.woff2) format(woff2);
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter Tight";
+    src: url(https://fonts.gstatic.com/s/intertight/v7/NGSwv5HMAFg6IuGlBNMjxK0M.woff2) format(woff2);
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ======================================
+   CSS Variables
+   ====================================== */
+:root {
+    /* Typography */
+    --primary-f: "Noto Sans KR", "Inter Tight", sans-serif;
+    --display-f: "Poppins", sans-serif;
+    --accent-f: "Montserrat", sans-serif;
+
+    /* Brand Colors - Primary */
+    --hive-blue: #0084ff;
+    --deep-navy: #0f40a4;
+    --sky-blue: #229be1;
+
+    /* Brand Colors - Secondary */
+    --video-purple: #75287c;
+    --deep-purple: #542858;
+    --exhibition-green: #0f966e;
+    --strategy-navy: #141f64;
+
+    /* Neutral Colors */
+    --black: #222222;
+    --dark-gray: #4a4a4a;
+    --gray: #5a5a5a;
+    --light-gray: #d9d9d9;
+    --ice-blue: #eff8fd;
+    --white: #ffffff;
+
+    /* Dark Mode */
+    --bg-dark: #0C0C0C;
+    --surface-dark: #1a1a1a;
+    --surface-light: #353535;
+
+    /* Legacy (for compatibility) */
+    --blue: #0084ff;
+    --pink: #D2BDF8;
+    --sky: #94BDF7;
+    --primary-c: #0084ff;
+    --secondary-c: #ccc;
+    --danger-c: #ff0000;
+
+    /* Layout */
+    --footer-height: 13rem;
+    --wrap: 1860;
+    --p-page: 30;
+    --p-margin: 25rem;
+    --header-height: 10rem;
+}
+
+@media screen and (max-width: 1023px) {
+    :root {
+        --wrap: 340;
+        --p-page: 15;
+        --p-margin: 15rem;
+        --header-height: 7rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    :root {
+        --p-margin: 10rem;
+    }
+}
+
+/* ======================================
+   Reset / Normalize
+   ====================================== */
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    outline: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+main {
+    display: block;
+}
+
+img {
+    max-width: 100%;
+    border-style: none;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    background-color: transparent;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+}
+
+button,
+input {
+    overflow: visible;
+}
+
+button,
+select {
+    text-transform: none;
+}
+
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+    -webkit-appearance: button;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin: 0px;
+}
+
+/* ======================================
+   Base Typography & Body
+   ====================================== */
+html,
+body {
+    background: #fff;
+    font-family: var(--primary-f);
+    font-size: calc(100vw / ((var(--wrap) + var(--p-page) * 2) / 10));
+}
+
+@media screen and (max-width: 1023px) and (min-width: 480px) {
+
+    html,
+    body {
+        font-size: 81%;
+    }
+}
+
+body {
+    font-family: var(--primary-f);
+    color: var(--white);
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    font-size: 1.6rem;
+    user-select: none;
+    line-height: 1.07;
+}
+
+body.scroll {
+    overflow: hidden;
+}
+
+.body__wrap--scroll {
+    pointer-events: none;
+}
+
+main {
+    flex-grow: 1;
+}
+
+/* ======================================
+   Layout Utilities
+   ====================================== */
+.center-wrap {
+    width: 100%;
+    margin: 0px auto;
+    max-width: calc(100% - var(--p-page) * 2 / 10 * 1rem);
+}
+
+@media screen and (max-width: 1023px) and (min-width: 480px) {
+    .center-wrap {
+        max-width: calc(480px - var(--p-page) * 2 / 10 * 1rem);
+    }
+}
+
+/* Desktop/Mobile Hide Classes */
+@media screen and (min-width: 1024px) {
+    .desktop--hide {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .mobile--hide {
+        display: none !important;
+    }
+}
+
+/* ======================================
+   Simple Title
+   ====================================== */
+.simple-title {
+    font-weight: 400;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--gray);
+    letter-spacing: -0.06em;
+    font-size: 20rem;
+    position: relative;
+    line-height: .8;
+    margin-bottom: -0.175em;
+    margin-left: -0.05em;
+    overflow: hidden;
+    display: inline-block;
+    clip-path: polygon(-10% -10%, 110% -10%, 110% 110%, -10% 110%);
+}
+
+.simple-title span {
+    display: inline-block;
+    z-index: 1;
+}
+
+.simple-title::before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    bottom: -2px;
+    width: 100%;
+    height: .175em;
+    background: var(--black);
+    z-index: 3;
+}
+
+/* ======================================
+   Link Hover Effect
+   ====================================== */
+.link-hover {
+    position: relative;
+    transition: color .2s;
+    cursor: pointer;
+    line-height: 1.4;
+    display: inline-block;
+}
+
+.link-hover div {
+    overflow: hidden;
+}
+
+.link-hover::before,
+.link-hover::after {
+    content: "";
+    position: absolute;
+    right: 0px;
+    bottom: 0em;
+    pointer-events: none;
+    width: 0%;
+    height: 1px;
+    background: currentColor;
+    transition: all .5s;
+}
+
+.link-hover::after {
+    width: 100%;
+    right: 0px;
+    display: none;
+    pointer-events: none;
+}
+
+.link-hover:not(.btn__text):hover::before {
+    left: 0px;
+    right: auto;
+    width: 100%;
+}
+
+.link-hover:not(.btn__text):hover:after {
+    width: 0px;
+}
+
+.link-hover .letter {
+    transition: transform .8s cubic-bezier(0.625, 0.05, 0, 1);
+    position: relative;
+    display: inline-block;
+    text-shadow: 0px 1.25em currentColor;
+}
+
+.link-hover:hover .letter {
+    transform: translateY(-100%);
+}
+
+/* Letter animation delays */
+.link-hover .letter:nth-child(1) {
+    transition-delay: 0s;
+}
+
+.link-hover .letter:nth-child(2) {
+    transition-delay: .0066s;
+}
+
+.link-hover .letter:nth-child(3) {
+    transition-delay: .0132s;
+}
+
+.link-hover .letter:nth-child(4) {
+    transition-delay: .0198s;
+}
+
+.link-hover .letter:nth-child(5) {
+    transition-delay: .0264s;
+}
+
+.link-hover .letter:nth-child(6) {
+    transition-delay: .033s;
+}
+
+.link-hover .letter:nth-child(7) {
+    transition-delay: .0396s;
+}
+
+.link-hover .letter:nth-child(8) {
+    transition-delay: .0462s;
+}
+
+.link-hover .letter:nth-child(9) {
+    transition-delay: .0528s;
+}
+
+.link-hover .letter:nth-child(10) {
+    transition-delay: .0594s;
+}

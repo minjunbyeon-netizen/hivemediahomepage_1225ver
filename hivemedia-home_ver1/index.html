@@ -373,33 +373,43 @@
                          COMPARE SECTION
                          ====================================== -->
                     <section id="compare" class="compare">
-                        <h2 class="simple-title"><span>Why Choose Us</span></h2>
                         <div class="compare__content">
                             <div class="compare__inner">
-                                <div class="compare__column">
-                                    <h3 class="compare__column-title">HIVEMEDIA</h3>
-                                    <ul class="compare__list compare__list--positive">
+                                <!-- Left Column - HIVEMEDIA (Blue) -->
+                                <div class="compare__column compare__column--left">
+                                    <span class="compare__column-label">HIVEMEDIA</span>
+                                    <ul class="compare__list">
                                         <li class="compare__item"><span class="compare__text">원스톱 솔루션</span></li>
                                         <li class="compare__item"><span class="compare__text">전문가 43인</span></li>
                                         <li class="compare__item"><span class="compare__text">전국 네트워크</span></li>
                                         <li class="compare__item"><span class="compare__text">맞춤 전략</span></li>
                                         <li class="compare__item"><span class="compare__text">합리적 비용</span></li>
+                                        <li class="compare__item"><span class="compare__text">빠른 대응</span></li>
+                                        <li class="compare__item"><span class="compare__text">투명한 보고</span></li>
+                                        <li class="compare__item"><span class="compare__text">지속적 성장</span></li>
                                     </ul>
                                 </div>
+
+                                <!-- Center Counter Circle -->
                                 <div class="compare__counter-wrap">
-                                    <div class="compare__counter">
-                                        <span id="counter">28</span><span>%</span>
+                                    <div class="compare__counter-circle">
+                                        <span class="compare__counter-label">IDEAS</span>
+                                        <span class="compare__counter" id="counter">28</span>
                                     </div>
-                                    <span class="compare__counter-text">고객 만족도</span>
                                 </div>
-                                <div class="compare__column">
-                                    <h3 class="compare__column-title">기존 방식</h3>
-                                    <ul class="compare__list compare__list--negative">
+
+                                <!-- Right Column - FREELANCER (Purple) -->
+                                <div class="compare__column compare__column--right">
+                                    <span class="compare__column-label">FREELANCER</span>
+                                    <ul class="compare__list">
                                         <li class="compare__item"><span class="compare__text">분산된 서비스</span></li>
                                         <li class="compare__item"><span class="compare__text">제한된 인력</span></li>
                                         <li class="compare__item"><span class="compare__text">지역 한정</span></li>
                                         <li class="compare__item"><span class="compare__text">일반적 접근</span></li>
                                         <li class="compare__item"><span class="compare__text">높은 비용</span></li>
+                                        <li class="compare__item"><span class="compare__text">느린 응답</span></li>
+                                        <li class="compare__item"><span class="compare__text">불투명한 과정</span></li>
+                                        <li class="compare__item"><span class="compare__text">단기적 성과</span></li>
                                     </ul>
                                 </div>
                             </div>
@@ -410,73 +420,113 @@
                          CALCULATOR SECTION
                          ====================================== -->
                     <section id="calc" class="calc">
-                        <div class="mission mission--two">
-                            <div class="mission__row mission__row--desktop">
-                                <span class="mission__text">마케팅 효과</span>
-                                <span class="mission__text">측정하기</span>
-                            </div>
-                            <div class="mission__row mission__row--mobile">
-                                <span class="mission__text mission__text--mobile">마케팅 효과 측정</span>
-                            </div>
-                        </div>
                         <div class="center-wrap">
                             <div class="calc__cards">
-                                <div class="calc__card tils-start">
-                                    <div class="calc__card-header">
-                                        <span class="calc__card-title">월 광고 예산</span>
-                                        <span class="calc__card-value">₩<span id="display1">300</span>만원</span>
+                                <!-- Box 1: Rate -->
+                                <div class="calc__card">
+                                    <span class="calc__card-label">RATE IN KRW</span>
+                                    <h3 class="calc__card-desc">현재 지불하고 있는<br>월 광고비</h3>
+                                    <div class="calc__slider-wrap">
+                                        <input type="range" id="slider1" class="calc__slider" min="100" max="1000"
+                                            value="300">
                                     </div>
-                                    <input type="range" id="slider1" class="calc__slider" min="100" max="1000"
-                                        value="300">
+                                    <div class="calc__card-value-wrap">
+                                        <span class="calc__card-number" id="display1">300</span>
+                                        <span class="calc__card-unit">만원</span>
+                                    </div>
                                 </div>
-                                <div class="calc__card tils-start">
-                                    <div class="calc__card-header">
-                                        <span class="calc__card-title">목표 전환율</span>
-                                        <span class="calc__card-value"><span id="display2">5</span>%</span>
+
+                                <!-- Box 2: Time -->
+                                <div class="calc__card">
+                                    <span class="calc__card-label">TIME</span>
+                                    <h3 class="calc__card-desc">월 평균 필요한<br>마케팅 시간</h3>
+                                    <div class="calc__slider-wrap">
+                                        <input type="range" id="slider2" class="calc__slider" min="10" max="500"
+                                            value="240">
                                     </div>
-                                    <input type="range" id="slider2" class="calc__slider" min="1" max="20" value="5">
+                                    <div class="calc__card-value-wrap">
+                                        <span class="calc__card-number" id="display2">240</span>
+                                        <span class="calc__card-unit">HOURS</span>
+                                    </div>
+                                </div>
+
+                                <!-- Box 3: Result -->
+                                <div class="calc__card calc__card--result">
+                                    <span class="calc__card-label">MISSED OPPORTUNITIES</span>
+                                    <h3 class="calc__card-desc">우리와 협업 시<br>절감 가능 비용</h3>
+                                    <div class="calc__formula">
+                                        <span id="formula">₩300 × 240 × 12 months =</span>
+                                    </div>
+                                    <div class="calc__card-value-wrap">
+                                        <span class="calc__card-number calc__card-number--result"
+                                            id="result">₩-2,724</span>
+                                        <span class="calc__card-unit">ANNUALLY</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="calc__result">
-                                <span class="calc__result-label">예상 월간 효과:</span>
-                                <span class="calc__result-value" id="result">$0</span>
-                            </div>
+                            <a href="portfolio.html" class="calc__btn btn">PDF Prices ↗</a>
                         </div>
                     </section>
 
                     <!-- ======================================
-                         CONTACT SECTION
+                         CONTACT SECTION (Typing Effect)
                          ====================================== -->
-                    <section class="cta-scroll">
-                        <div class="contact contact--white">
-                            <div class="center-wrap">
-                                <form class="contact__content">
-                                    <div class="contact__row">
-                                        <span class="contact__text">안녕하세요,</span>
-                                        <span class="contact__text">하이브미디어입니다!</span>
+                    <section id="contact-form" class="contact-typing">
+                        <div class="center-wrap">
+                            <form class="contact-typing__form">
+                                <!-- Row 1: Hey, Alina! My name is [input] and I am from [input] -->
+                                <div class="contact-typing__row" data-typing>
+                                    <span class="contact-typing__text">Hey, Alina! My name is</span>
+                                    <div class="contact-typing__input-wrap">
+                                        <input type="text" name="name" class="contact-typing__input"
+                                            placeholder="Your Name">
                                     </div>
-                                    <div class="contact__row">
-                                        <span class="contact__text">저는</span>
-                                        <div class="contact__input-wrap">
-                                            <input type="text" name="name" class="contact__input" placeholder="이름/회사명">
-                                            <div class="contact__input-border"></div>
-                                        </div>
+                                    <span class="contact-typing__text">and I am from</span>
+                                    <div class="contact-typing__input-wrap">
+                                        <input type="text" name="country" class="contact-typing__input"
+                                            placeholder="Country">
                                     </div>
-                                    <div class="contact__row">
-                                        <span class="contact__text">연락처</span>
-                                        <div class="contact__btns">
-                                            <button type="button" class="contact__btn btn btn--active">이메일</button>
-                                            <button type="button" class="contact__btn btn">전화번호</button>
-                                        </div>
-                                        <div class="contact__input-wrap">
-                                            <input type="text" name="social" class="contact__input"
-                                                placeholder="email@company.com">
-                                            <div class="contact__input-border"></div>
-                                        </div>
+                                </div>
+
+                                <!-- Row 2: Let's connect about [buttons] -->
+                                <div class="contact-typing__row" data-typing>
+                                    <span class="contact-typing__text">Let's connect about</span>
+                                    <div class="contact-typing__btns">
+                                        <button type="button" class="contact-typing__btn"
+                                            data-active="false">Collaboration</button>
+                                        <button type="button" class="contact-typing__btn" data-active="false">Potential
+                                            Project</button>
+                                        <button type="button" class="contact-typing__btn"
+                                            data-active="false">Networking</button>
                                     </div>
-                                    <button type="submit" class="contact__send btn btn--white">문의하기</button>
-                                </form>
-                            </div>
+                                </div>
+
+                                <!-- Row 3: We can talk in more detail at [email input] [buttons] -->
+                                <div class="contact-typing__row" data-typing>
+                                    <span class="contact-typing__text">We can talk in more detail at</span>
+                                    <div class="contact-typing__input-wrap contact-typing__input-wrap--wide">
+                                        <input type="email" name="email" class="contact-typing__input"
+                                            placeholder="name@website.com">
+                                    </div>
+                                    <div class="contact-typing__btns">
+                                        <button type="button" class="contact-typing__btn" data-active="false">WhatsApp /
+                                            LinkedIn</button>
+                                        <button type="button" class="contact-typing__btn contact-typing__btn--active"
+                                            data-active="true">Email</button>
+                                    </div>
+                                </div>
+
+                                <!-- Row 4: In short, [message input] -->
+                                <div class="contact-typing__row" data-typing>
+                                    <span class="contact-typing__text">In short,</span>
+                                    <div class="contact-typing__input-wrap contact-typing__input-wrap--full">
+                                        <input type="text" name="message" class="contact-typing__input"
+                                            placeholder="Type your message">
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="contact-typing__submit">Send Message ↗</button>
+                            </form>
                         </div>
                     </section>
 

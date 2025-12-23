@@ -18,16 +18,27 @@ window.PRELOADER = true;
 document.addEventListener('DOMContentLoaded', function () {
     console.log('✅ Document ready');
 
-    // Initialize all features
-    initPreloader();
-    initCursor();
-    initHeader();
-    initMobileMenu();
-    initLinkHover();
-    initCalculator();
-    initTiltEffects();
-    initScrollAnimations();
-    initAccessibility();
+    // Initialize all features with error handling
+    const initFunctions = [
+        { name: 'Preloader', fn: initPreloader },
+        { name: 'Cursor', fn: initCursor },
+        { name: 'Header', fn: initHeader },
+        { name: 'MobileMenu', fn: initMobileMenu },
+        { name: 'LinkHover', fn: initLinkHover },
+        { name: 'Calculator', fn: initCalculator },
+        { name: 'TiltEffects', fn: initTiltEffects },
+        { name: 'ScrollAnimations', fn: initScrollAnimations },
+        { name: 'Accessibility', fn: initAccessibility }
+    ];
+
+    initFunctions.forEach(({ name, fn }) => {
+        try {
+            fn();
+            console.log(`✅ ${name} initialized`);
+        } catch (e) {
+            console.warn(`⚠️ ${name} failed:`, e.message);
+        }
+    });
 });
 
 // ======================================
@@ -300,32 +311,41 @@ function initLinkHover() {
 }
 
 // ======================================
-// CALCULATOR
+// CALCULATOR (3-Box Design)
 // ======================================
 function initCalculator() {
     if (!document.querySelector('.calc')) return;
 
     const slider1 = document.getElementById('slider1');
     const slider2 = document.getElementById('slider2');
+    const display1 = document.getElementById('display1');
+    const display2 = document.getElementById('display2');
+    const result = document.getElementById('result');
+    const formula = document.getElementById('formula');
 
     if (!slider1 || !slider2) return;
 
     function updateSliders() {
-        const budget = parseFloat(slider1.value);
-        const rate = parseFloat(slider2.value);
+        const rate = parseFloat(slider1.value);  // 만원 단위
+        const hours = parseFloat(slider2.value); // 시간
 
-        document.getElementById('display1').textContent = budget;
-        document.getElementById('display2').textContent = rate;
+        // Display values
+        display1.textContent = rate;
+        display2.textContent = hours;
 
-        // 간단한 계산 공식
-        const result = Math.round(budget * 10000 * (rate / 100) * 12);
-        document.getElementById('result').textContent = '₩' + result.toLocaleString();
+        // Calculate annual savings (rate × hours × 12 months × 0.3 reduction)
+        const savings = Math.round(rate * hours * 12 * 0.3);
+        const savingsFormatted = savings.toLocaleString();
 
-        // Slider progress
-        [slider1, slider2].forEach(slider => {
-            const progress = (slider.value - slider.min) / (slider.max - slider.min) * 100;
-            slider.style.setProperty('--slider-progress', progress + '%');
-        });
+        // Update formula
+        if (formula) {
+            formula.textContent = `₩${rate} × ${hours} × 12 months =`;
+        }
+
+        // Update result (negative = savings)
+        if (result) {
+            result.textContent = `₩-${savingsFormatted}`;
+        }
     }
 
     slider1.addEventListener('input', updateSliders);
@@ -423,34 +443,25 @@ function initScrollAnimations() {
             { y: '0%', delay: 0.25, duration: 0.5, stagger: { amount: 0.5 } }, 0);
     }
 
-    // Compare counter
+    // Compare counter - scroll-based number change
     if (document.querySelector('.compare')) {
-        const counterWrap = document.querySelector('.compare__counter-wrap');
-        const compareContent = document.querySelector('.compare__content');
+        const counterEl = document.querySelector('#counter');
 
-        if (counterWrap && compareContent) {
-            const offsetTop = counterWrap.getBoundingClientRect().top - compareContent.getBoundingClientRect().top;
-            const pinDistance = document.querySelector('.compare__inner').clientHeight - 2 * offsetTop - counterWrap.clientHeight;
-
-            const compareTl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: '.compare__counter-wrap',
-                    pin: true,
-                    start: 'center center',
-                    end: '+=' + pinDistance + 'px',
-                    scrub: 1,
-                    pinSpacing: false
-                }
-            });
-
-            const counterObj = { val: 28 };
-            compareTl.to(counterObj, {
+        if (counterEl) {
+            // Counter animation on scroll
+            gsap.to({ val: 28 }, {
                 val: 99,
                 duration: 1,
-                onUpdate: () => {
-                    document.querySelector('#counter').textContent = Math.floor(counterObj.val);
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '.compare',
+                    start: 'top center',
+                    end: 'bottom center',
+                    scrub: 1
                 },
-                ease: 'none'
+                onUpdate: function () {
+                    counterEl.textContent = Math.floor(this.targets()[0].val);
+                }
             });
         }
     }
@@ -471,6 +482,28 @@ function initScrollAnimations() {
                     scrub: 2
                 }
             });
+    }
+
+    // Contact Typing Section - Scroll reveal animation
+    const typingRows = document.querySelectorAll('.contact-typing__row[data-typing]');
+    if (typingRows.length) {
+        typingRows.forEach((row, index) => {
+            gsap.fromTo(row,
+                { opacity: 0, y: 50 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    delay: index * 0.15,
+                    scrollTrigger: {
+                        trigger: row,
+                        start: 'top 85%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    onComplete: () => row.classList.add('visible')
+                }
+            );
+        });
     }
 
     ScrollTrigger.refresh();
@@ -513,5 +546,19 @@ $(document).ready(function () {
                 alert('전송 오류가 발생했습니다. 이메일로 문의해주세요.');
             }
         });
+    });
+
+    // Contact Typing - Button toggle
+    $(document).on('click', '.contact-typing__btn', function () {
+        const $btn = $(this);
+        const $group = $btn.closest('.contact-typing__btns');
+
+        // Toggle single button or group (for contact type selection)
+        if ($group.find('[data-active="true"]').length && !$btn.attr('data-active')) {
+            // If other buttons in group, toggle active state
+            $group.find('.contact-typing__btn').removeClass('contact-typing__btn--active').attr('data-active', 'false');
+        }
+        $btn.toggleClass('contact-typing__btn--active');
+        $btn.attr('data-active', $btn.hasClass('contact-typing__btn--active') ? 'true' : 'false');
     });
 });

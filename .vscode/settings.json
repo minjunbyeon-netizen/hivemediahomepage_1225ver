@@ -1,0 +1,6 @@
+{
+    "gitlens.ai.experimental.composer.enabled": true,
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "editor.codeActions.triggerOnFocusChange": true,
+    "merge-conflict.autoNavigateNextConflict.enabled": true
+}

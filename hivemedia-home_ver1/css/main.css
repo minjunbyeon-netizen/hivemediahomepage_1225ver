@@ -13,3 +13,6 @@
 
 /* Sections: Hero, About, Works, etc. */
 @import url('./sections.css');
+
+/* Subpages: Page Hero, Bento Grid, Cards */
+@import url('./subpages.css');

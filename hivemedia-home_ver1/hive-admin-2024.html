@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글쓰기 | HIVEMEDIA</title>
+    <meta name="description" content="하이브미디어 글쓰기 페이지">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Inter+Tight:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        .write-page {
+            min-height: 100vh;
+            padding: 120px 0 80px;
+            background: #0a0a0a;
+            cursor: auto !important;
+        }
+
+        /* 커서 보이게 하기 */
+        body,
+        body * {
+            cursor: auto !important;
+        }
+
+        .cursor {
+            display: none !important;
+        }
+
+        .write-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .write-header {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .write-header__left h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.25rem;
+        }
+
+        .write-header__left p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        .write-header__actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            text-decoration: none;
+        }
+
+        .btn-ghost {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Form Card */
+        .write-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        /* Meta Section */
+        .meta-section {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .meta-row {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .meta-label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 밝은 입력 필드 스타일 */
+        .meta-input,
+        .meta-select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 0.95rem;
+            font-family: inherit;
+            background: #fff;
+            color: #1d1d1f;
+            transition: box-shadow 0.2s;
+        }
+
+        .meta-input:focus,
+        .meta-select:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+        }
+
+        .meta-input::placeholder {
+            color: #999;
+        }
+
+        /* Title Input - 밝은 배경 */
+        .title-section {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .title-input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1.75rem;
+            font-weight: 700;
+            background: #fff;
+            color: #1d1d1f;
+            line-height: 1.3;
+        }
+
+        .title-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+        }
+
+        .title-input::placeholder {
+            color: #bbb;
+        }
+
+        /* Editor Toolbar */
+        .editor-toolbar {
+            display: flex;
+            gap: 0.25rem;
+            padding: 0.75rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            flex-wrap: wrap;
+        }
+
+        .toolbar-btn {
+            padding: 0.5rem 0.75rem;
+            border: none;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 0.375rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .toolbar-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+        }
+
+        .toolbar-btn.active {
+            background: #fff;
+            color: #000;
+        }
+
+        .toolbar-divider {
+            width: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 0 0.5rem;
+        }
+
+        /* Content Editor - 밝은 배경 */
+        .editor-section {
+            padding: 1.5rem 2rem;
+        }
+
+        .content-editor {
+            min-height: 400px;
+            border: none;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.9;
+            color: #333;
+            background: #fff;
+            overflow-y: auto;
+        }
+
+        .content-editor:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+        }
+
+        .content-editor:empty::before {
+            content: attr(data-placeholder);
+            color: #999;
+        }
+
+        .content-editor h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 1.5rem 0 1rem;
+            color: #1d1d1f;
+        }
+
+        .content-editor h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 1.25rem 0 0.75rem;
+            color: #1d1d1f;
+        }
+
+        .content-editor h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 1rem 0 0.5rem;
+            color: #1d1d1f;
+        }
+
+        .content-editor p {
+            margin-bottom: 1rem;
+        }
+
+        .content-editor ul,
+        .content-editor ol {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .content-editor li {
+            margin-bottom: 0.5rem;
+        }
+
+        .content-editor blockquote {
+            border-left: 4px solid #0071e3;
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: #555;
+            font-style: italic;
+        }
+
+        /* Image Upload */
+        .image-section {
+            padding: 0 2rem 1.5rem;
+        }
+
+        .image-upload {
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .image-upload:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .image-upload__icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .image-upload__text {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        .image-preview {
+            max-width: 100%;
+            max-height: 250px;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .image-preview.show {
+            display: block;
+        }
+
+        /* Tags Section - 밝은 배경 */
+        .tags-section {
+            padding: 0 2rem 2rem;
+        }
+
+        .tags-input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 0.95rem;
+            font-family: inherit;
+            background: #fff;
+            color: #1d1d1f;
+        }
+
+        .tags-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+        }
+
+        .tags-input::placeholder {
+            color: #999;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            padding: 1rem 1.5rem;
+            background: #fff;
+            color: #000;
+            border-radius: 0.75rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 9999;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .toast.error {
+            background: #ff3b30;
+            color: #fff;
+        }
+
+        .toast.success {
+            background: #34c759;
+            color: #fff;
+        }
+
+        /* Spinner */
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            border-top-color: #000;
+            animation: spin 0.8s ease-in-out infinite;
+            margin-right: 0.5rem;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .write-container {
+                padding: 0 1rem;
+            }
+
+            .write-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+
+            .title-input {
+                font-size: 1.5rem;
+            }
+
+            .meta-row {
+                flex-direction: column;
+            }
+
+            .meta-section,
+            .title-section,
+            .editor-section,
+            .image-section,
+            .tags-section {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+            }
+
+            .editor-toolbar {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="subpage">
+    <script>
+        // 비밀번호 확인 (페이지 로드 시)
+        (function () {
+            const ADMIN_PASSWORD = '0201';
+            const password = prompt('관리자 비밀번호를 입력하세요:');
+            if (password !== ADMIN_PASSWORD) {
+                alert('비밀번호가 틀렸습니다.');
+                window.location.href = 'articles.html';
+            }
+        })();
+    </script>
+    <!-- Header -->
+    <header class="header">
+        <div class="header__wrap center-wrap">
+            <a href="index.html" class="header__logo">HIVEMEDIA</a>
+            <nav class="header__nav">
+                <a href="about.html" class="header__nav-link">About</a>
+                <a href="services.html" class="header__nav-link">Services</a>
+                <a href="portfolio.html" class="header__nav-link">Portfolio</a>
+                <a href="articles.html" class="header__nav-link active">Archive</a>
+                <a href="contact.html" class="header__nav-link">Contact</a>
+            </nav>
+            <button class="header__burger">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Write Page -->
+    <main class="write-page">
+        <div class="write-container">
+            <!-- Header -->
+            <div class="write-header">
+                <div class="write-header__left">
+                    <h1>새 글 작성</h1>
+                    <p>프로젝트 아카이브에 새 글을 작성합니다</p>
+                </div>
+            </div>
+
+            <!-- Form Card -->
+            <div class="write-card">
+                <!-- Meta Section -->
+                <div class="meta-section">
+                    <div class="meta-row">
+                        <div class="meta-item">
+                            <label class="meta-label">카테고리</label>
+                            <select id="category" class="meta-select">
+                                <option value="프로젝트">프로젝트</option>
+                                <option value="마케팅">마케팅</option>
+                                <option value="웹사이트">웹사이트</option>
+                                <option value="영상">영상</option>
+                                <option value="전시">전시</option>
+                                <option value="기타">기타</option>
+                            </select>
+                        </div>
+                        <div class="meta-item">
+                            <label class="meta-label">클라이언트</label>
+                            <input type="text" id="client" class="meta-input" placeholder="클라이언트명 (선택사항)">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Title Input -->
+                <div class="title-section">
+                    <label class="meta-label">제목</label>
+                    <input type="text" id="title" class="title-input" placeholder="제목을 입력하세요" required>
+                </div>
+
+                <!-- Editor Toolbar -->
+                <div class="editor-toolbar">
+                    <button type="button" class="toolbar-btn" data-command="formatBlock" data-value="h1" title="제목 1">
+                        <strong>H1</strong>
+                    </button>
+                    <button type="button" class="toolbar-btn" data-command="formatBlock" data-value="h2" title="제목 2">
+                        <strong>H2</strong>
+                    </button>
+                    <button type="button" class="toolbar-btn" data-command="formatBlock" data-value="h3" title="제목 3">
+                        <strong>H3</strong>
+                    </button>
+                    <button type="button" class="toolbar-btn" data-command="formatBlock" data-value="p" title="본문">
+                        P
+                    </button>
+                    <div class="toolbar-divider"></div>
+                    <button type="button" class="toolbar-btn" data-command="bold" title="굵게">
+                        <strong>B</strong>
+                    </button>
+                    <button type="button" class="toolbar-btn" data-command="italic" title="기울임">
+                        <em>I</em>
+                    </button>
+                    <button type="button" class="toolbar-btn" data-command="underline" title="밑줄">
+                        <u>U</u>
+                    </button>
+                    <div class="toolbar-divider"></div>
+                    <button type="button" class="toolbar-btn" data-command="insertUnorderedList" title="글머리 기호">
+                        • 목록
+                    </button>
+                    <button type="button" class="toolbar-btn" data-command="insertOrderedList" title="번호 목록">
+                        1. 목록
+                    </button>
+                    <div class="toolbar-divider"></div>
+                    <button type="button" class="toolbar-btn" data-command="formatBlock" data-value="blockquote"
+                        title="인용">
+                        " 인용
+                    </button>
+                </div>
+
+                <!-- Content Editor -->
+                <div class="editor-section">
+                    <div id="content" class="content-editor" contenteditable="true" data-placeholder="내용을 입력하세요...">
+                    </div>
+                </div>
+
+                <!-- Image Upload -->
+                <div class="image-section">
+                    <label class="meta-label">썸네일 이미지</label>
+                    <div class="image-upload" id="imageUpload">
+                        <div class="image-upload__icon">🖼️</div>
+                        <div class="image-upload__text">클릭하여 이미지 업로드 (선택사항)</div>
+                        <input type="file" id="thumbnail" accept="image/*" style="display: none;">
+                    </div>
+                    <img id="imagePreview" class="image-preview" alt="미리보기">
+                </div>
+
+                <!-- Tags Section -->
+                <div class="tags-section">
+                    <label class="meta-label">태그</label>
+                    <input type="text" id="tags" class="tags-input" placeholder="태그를 쉴표로 구분하여 입력 (예: 마케팅, 브랜딩, SNS)">
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="form-actions"
+                    style="padding: 1.5rem 2rem; display: flex; gap: 1rem; justify-content: flex-end;">
+                    <a href="articles.html" class="btn btn-ghost">취소</a>
+                    <button type="button" id="submitBtn" class="btn btn-primary">발행하기</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+
+        // Firebase 설정
+        const firebaseConfig = {
+            apiKey: "AIzaSyBeZGgTw8zJoYz26PUfk3xoU-83oMD3v_M",
+            authDomain: "hivemedia-archive.firebaseapp.com",
+            projectId: "hivemedia-archive",
+            storageBucket: "hivemedia-archive.firebasestorage.app",
+            messagingSenderId: "105246116532",
+            appId: "1:105246116532:web:18aad82490a11b7d4ea5e1",
+            measurementId: "G-1YZDYEPFFN"
+        };
+
+        // Firebase 초기화
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const storage = getStorage(app);
+
+        // DOM Elements
+        const submitBtn = document.getElementById('submitBtn');
+        const toast = document.getElementById('toast');
+        const imageUpload = document.getElementById('imageUpload');
+        const thumbnailInput = document.getElementById('thumbnail');
+        const imagePreview = document.getElementById('imagePreview');
+        const contentEditor = document.getElementById('content');
+
+        let selectedFile = null;
+
+        // Toolbar functionality
+        document.querySelectorAll('.toolbar-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const command = btn.dataset.command;
+                const value = btn.dataset.value || null;
+
+                if (command === 'formatBlock' && value) {
+                    document.execCommand(command, false, value);
+                } else {
+                    document.execCommand(command, false, value);
+                }
+
+                contentEditor.focus();
+            });
+        });
+
+        // Image Upload Preview
+        imageUpload.addEventListener('click', () => thumbnailInput.click());
+
+        thumbnailInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                selectedFile = file;
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    imagePreview.src = e.target.result;
+                    imagePreview.classList.add('show');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Show Toast
+        function showToast(message, type = '') {
+            toast.textContent = message;
+            toast.className = 'toast show ' + type;
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Generate Slug
+        function generateSlug(title) {
+            return title
+                .toLowerCase()
+                .replace(/[^a-z0-9가-힣]+/g, '-')
+                .replace(/^-+|-+$/g, '')
+                + '-' + Date.now();
+        }
+
+        // Submit Handler
+        submitBtn.addEventListener('click', async () => {
+            const title = document.getElementById('title').value.trim();
+            const category = document.getElementById('category').value;
+            const client = document.getElementById('client').value.trim();
+            const content = contentEditor.innerHTML.trim();
+            const tags = document.getElementById('tags').value.trim();
+
+            if (!title) {
+                showToast('제목을 입력해주세요.', 'error');
+                document.getElementById('title').focus();
+                return;
+            }
+
+            if (!content || content === '<br>') {
+                showToast('내용을 입력해주세요.', 'error');
+                contentEditor.focus();
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner"></span>발행 중...';
+
+            try {
+                let thumbnailURL = '';
+
+                // Upload image if selected
+                if (selectedFile) {
+                    const fileName = `articles/${Date.now()}_${selectedFile.name}`;
+                    const storageRef = ref(storage, fileName);
+                    await uploadBytes(storageRef, selectedFile);
+                    thumbnailURL = await getDownloadURL(storageRef);
+                }
+
+                // Save to Firestore
+                const docRef = await addDoc(collection(db, 'articles'), {
+                    title: title,
+                    slug: generateSlug(title),
+                    category: category,
+                    client: client,
+                    content: content,
+                    tags: tags,
+                    thumbnail: thumbnailURL,
+                    viewCount: 0,
+                    status: 'published',
+                    createdAt: serverTimestamp(),
+                    updatedAt: serverTimestamp()
+                });
+
+                showToast('글이 성공적으로 발행되었습니다!', 'success');
+
+                // Redirect to article list after 1.5s
+                setTimeout(() => {
+                    window.location.href = 'articles.html';
+                }, 1500);
+
+            } catch (error) {
+                console.error('Error:', error);
+                showToast('오류가 발생했습니다: ' + error.message, 'error');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '발행하기';
+            }
+        });
+
+        // Keyboard shortcut: Ctrl+Enter to publish
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                submitBtn.click();
+            }
+        });
+    </script>
+</body>
+
+</html>

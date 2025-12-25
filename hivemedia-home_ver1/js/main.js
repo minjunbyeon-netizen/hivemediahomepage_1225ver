@@ -528,7 +528,8 @@ function initAccessibility() {
 // FORM SUBMISSION
 // ======================================
 $(document).ready(function () {
-    $(document).on('submit', 'form', function (e) {
+    // articleForm은 Firebase에서 처리하므로 제외
+    $(document).on('submit', 'form:not(#articleForm)', function (e) {
         e.preventDefault();
 
         const lang = navigator.language || navigator.userLanguage || 'unknown';

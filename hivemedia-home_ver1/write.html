@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글쓰기 | HIVEMEDIA</title>
+    <meta name="description" content="하이브미디어 글쓰기 페이지">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Poppins:wght@500;600;700;800;900&family=Montserrat:wght@300;400;600;700;800;900&family=Inter+Tight:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <style>
+        .write-page {
+            min-height: 100vh;
+            padding: 120px 0 80px;
+        }
+
+        .write-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .write-header {
+            margin-bottom: 3rem;
+        }
+
+        .write-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .write-subtitle {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .write-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            color: #fff;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .form-textarea {
+            min-height: 300px;
+            resize: vertical;
+            line-height: 1.8;
+        }
+
+        .form-select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.5)' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.25rem;
+        }
+
+        .form-select option {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Toast Message */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            padding: 1rem 2rem;
+            background: #fff;
+            color: #000;
+            border-radius: 0.75rem;
+            font-weight: 500;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 9999;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .toast.error {
+            background: #ff4444;
+            color: #fff;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+            border-top-color: #000;
+            animation: spin 0.8s ease-in-out infinite;
+            margin-right: 0.5rem;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Image Upload */
+        .image-upload {
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .image-upload:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .image-upload__icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .image-upload__text {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .image-preview {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .image-preview.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="subpage">
+    <!-- Custom Cursor -->
+    <div class="cursor">
+        <div class="cursor__show">
+            <p></p>
+        </div>
+        <div class="cursor__video">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 5.14V19.14L19 12.14L8 5.14Z" fill="currentColor" />
+            </svg>
+        </div>
+        <div class="cursor__works"></div>
+        <div class="cursor__arrow">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" />
+            </svg>
+        </div>
+        <span class="cursor__click"></span>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header__wrap center-wrap">
+            <a href="index.html" class="header__logo">HIVEMEDIA</a>
+            <nav class="header__nav">
+                <a href="about.html" class="header__nav-link">About</a>
+                <a href="services.html" class="header__nav-link">Services</a>
+                <a href="portfolio.html" class="header__nav-link">Portfolio</a>
+                <a href="contact.html" class="header__nav-link">Contact</a>
+            </nav>
+            <button class="header__burger">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <div class="center-wrap">
+            <ol class="breadcrumb__list">
+                <li><a href="index.html">홈</a></li>
+                <li><a href="articles.html">아카이브</a></li>
+                <li aria-current="page">글쓰기</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Write Page -->
+    <main class="write-page">
+        <div class="write-container">
+            <header class="write-header">
+                <h1 class="write-title">새 글 작성</h1>
+                <p class="write-subtitle">프로젝트 아카이브에 새 글을 작성합니다</p>
+            </header>
+
+            <form id="articleForm" class="write-form">
+                <div class="form-group">
+                    <label class="form-label" for="title">제목 *</label>
+                    <input type="text" id="title" class="form-input" placeholder="제목을 입력하세요" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="category">카테고리</label>
+                        <select id="category" class="form-select">
+                            <option value="프로젝트">프로젝트</option>
+                            <option value="마케팅">마케팅</option>
+                            <option value="웹사이트">웹사이트</option>
+                            <option value="영상">영상</option>
+                            <option value="전시">전시</option>
+                            <option value="기타">기타</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="client">클라이언트</label>
+                        <input type="text" id="client" class="form-input" placeholder="클라이언트명 (선택)">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="thumbnail">썸네일 이미지</label>
+                    <div class="image-upload" id="imageUpload">
+                        <div class="image-upload__icon">📷</div>
+                        <div class="image-upload__text">클릭하여 이미지 업로드</div>
+                        <input type="file" id="thumbnail" accept="image/*" style="display: none;">
+                    </div>
+                    <img id="imagePreview" class="image-preview" alt="미리보기">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="content">내용 *</label>
+                    <textarea id="content" class="form-textarea" placeholder="내용을 입력하세요..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="tags">태그</label>
+                    <input type="text" id="tags" class="form-input" placeholder="태그를 쉼표로 구분하여 입력 (예: 마케팅, 브랜딩, SNS)">
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" id="submitBtn" class="btn btn-primary">
+                        발행하기
+                    </button>
+                    <a href="articles.html" class="btn btn-secondary">취소</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Toast -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="center-wrap">
+            <div class="footer__content">
+                <a href="index.html" class="footer__logo">HIVEMEDIA</a>
+                <nav class="footer__nav">
+                    <a href="about.html">About</a>
+                    <a href="services.html">Services</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+            </div>
+            <div class="footer__bottom">
+                <p>© 2023 HIVEMEDIA. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+
+        // Firebase 설정
+        const firebaseConfig = {
+            apiKey: "AIzaSyBeZGgTw8zJoYz26PUfk3xoU-83oMD3v_M",
+            authDomain: "hivemedia-archive.firebaseapp.com",
+            projectId: "hivemedia-archive",
+            storageBucket: "hivemedia-archive.firebasestorage.app",
+            messagingSenderId: "105246116532",
+            appId: "1:105246116532:web:18aad82490a11b7d4ea5e1",
+            measurementId: "G-1YZDYEPFFN"
+        };
+
+        // Firebase 초기화
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const storage = getStorage(app);
+
+        // DOM Elements
+        const form = document.getElementById('articleForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const toast = document.getElementById('toast');
+        const imageUpload = document.getElementById('imageUpload');
+        const thumbnailInput = document.getElementById('thumbnail');
+        const imagePreview = document.getElementById('imagePreview');
+
+        let selectedFile = null;
+
+        // Image Upload Preview
+        imageUpload.addEventListener('click', () => thumbnailInput.click());
+
+        thumbnailInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                selectedFile = file;
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    imagePreview.src = e.target.result;
+                    imagePreview.classList.add('show');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Show Toast
+        function showToast(message, isError = false) {
+            toast.textContent = message;
+            toast.className = 'toast show' + (isError ? ' error' : '');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Generate Slug
+        function generateSlug(title) {
+            return title
+                .toLowerCase()
+                .replace(/[^a-z0-9가-힣]+/g, '-')
+                .replace(/^-+|-+$/g, '')
+                + '-' + Date.now();
+        }
+
+        // Form Submit
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const title = document.getElementById('title').value.trim();
+            const category = document.getElementById('category').value;
+            const client = document.getElementById('client').value.trim();
+            const content = document.getElementById('content').value.trim();
+            const tags = document.getElementById('tags').value.trim();
+
+            if (!title || !content) {
+                showToast('제목과 내용을 입력해주세요.', true);
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner"></span>발행 중...';
+
+            try {
+                let thumbnailURL = '';
+
+                // Upload image if selected
+                if (selectedFile) {
+                    const fileName = `articles/${Date.now()}_${selectedFile.name}`;
+                    const storageRef = ref(storage, fileName);
+                    await uploadBytes(storageRef, selectedFile);
+                    thumbnailURL = await getDownloadURL(storageRef);
+                }
+
+                // Save to Firestore
+                const docRef = await addDoc(collection(db, 'articles'), {
+                    title: title,
+                    slug: generateSlug(title),
+                    category: category,
+                    client: client,
+                    content: content,
+                    tags: tags,
+                    thumbnail: thumbnailURL,
+                    viewCount: 0,
+                    status: 'published',
+                    createdAt: serverTimestamp(),
+                    updatedAt: serverTimestamp()
+                });
+
+                showToast('글이 성공적으로 발행되었습니다!');
+
+                // Redirect to article list after 1.5s
+                setTimeout(() => {
+                    window.location.href = 'articles.html';
+                }, 1500);
+
+            } catch (error) {
+                console.error('Error:', error);
+                showToast('오류가 발생했습니다: ' + error.message, true);
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '발행하기';
+            }
+        });
+    </script>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

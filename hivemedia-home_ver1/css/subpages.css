@@ -1025,9 +1025,9 @@
 }
 
 /* ======================================
-   SUBPAGE HEADER
+   SUBPAGE HEADER (only applies to body.subpage)
    ====================================== */
-.header {
+body.subpage .header {
     position: fixed;
     top: 0;
     left: 0;
@@ -1039,13 +1039,13 @@
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
 
-.header__wrap {
+body.subpage .header__wrap {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.header__logo {
+body.subpage .header__logo {
     font-family: "Inter Tight", sans-serif;
     font-size: 2rem;
     font-weight: 700;
@@ -1054,12 +1054,12 @@
     text-transform: lowercase;
 }
 
-.header__nav {
+body.subpage .header__nav {
     display: flex;
     gap: 3rem;
 }
 
-.header__nav-link {
+body.subpage .header__nav-link {
     font-size: 1.4rem;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.7);
@@ -1067,12 +1067,12 @@
     transition: color 0.3s ease;
 }
 
-.header__nav-link:hover,
-.header__nav-link.active {
+body.subpage .header__nav-link:hover,
+body.subpage .header__nav-link.active {
     color: #ffffff;
 }
 
-.header__burger {
+body.subpage .header__burger {
     display: none;
     flex-direction: column;
     gap: 6px;
@@ -1082,7 +1082,7 @@
     padding: 10px;
 }
 
-.header__burger span {
+body.subpage .header__burger span {
     display: block;
     width: 25px;
     height: 2px;
@@ -1091,11 +1091,11 @@
 }
 
 @media screen and (max-width: 768px) {
-    .header__nav {
+    body.subpage .header__nav {
         display: none;
     }
 
-    .header__burger {
+    body.subpage .header__burger {
         display: flex;
     }
 }
